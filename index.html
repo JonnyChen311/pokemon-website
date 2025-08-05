@@ -3,25 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pokémon Vibes Generator</title>
+  <title>Pokémon Vibe Checker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Pokémon Vibes Generator</h1>
+    <h1>🎯 Pokémon Vibe Checker</h1>
+
     <form id="poke-form">
-      <input type="text" id="poke-input" placeholder="Enter a Pokémon name..." required />
-      <button type="submit">🎯 Show Me the Vibe</button>
+      <input type="text" id="poke-input" placeholder="Enter Pokémon name..." required />
+      <button type="submit">Show Me the Vibe</button>
     </form>
 
     <div id="result" class="hidden">
-      <img id="poke-sprite" alt="" />
-      <img id="gif" alt="Pokémon Vibe GIF"/>
+      <div class="images">
+        <img id="poke-sprite" alt="Pokémon sprite" />
+        <img id="gif" alt="Giphy result" />
+      </div>
       <p id="vibe-text"></p>
-      <button id="reset-btn">🔁 Try Another One</button>
+      <button id="reset-btn">Try Another</button>
     </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+

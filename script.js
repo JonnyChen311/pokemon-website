@@ -6,11 +6,11 @@ const gifImg = document.getElementById('gif');
 const vibeText = document.getElementById('vibe-text');
 const resetBtn = document.getElementById('reset-btn');
 
-// 🔑 Replace this with your own Giphy API key
-const GIPHY_KEY = 'qyojpWPRSMNsZiIG6J0miLlcT4SAxI1y';
+const GIPHY_KEY = 'qyojpWPRSMNsZiIG6J0miLlcT4SAxI1y'; // <--- Replace this!
 
 form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  e.preventDefault(); // 🔑 IMPORTANT for mobile
+
   const pokemonName = input.value.trim().toLowerCase();
   if (!pokemonName) return;
 
@@ -18,21 +18,20 @@ form.addEventListener('submit', async (e) => {
   const giphyURL = `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_KEY}&q=${pokemonName}&limit=1`;
 
   try {
-    // Step 1: Fetch from PokéAPI
+    // Fetch Pokémon data
     const pokeRes = await fetch(pokeURL);
-    if (!pokeRes.ok) throw new Error('Not a real Pokémon');
+    if (!pokeRes.ok) throw new Error('Pokémon not found');
     const pokeData = await pokeRes.json();
     pokeSprite.src = pokeData.sprites.front_default;
-    pokeSprite.alt = `${pokemonName} sprite`;
+    pokeSprite.alt = pokeData.name;
 
-    // Step 2: Fetch from Giphy
-    const giphyRes = await fetch(giphyURL);
-    const giphyData = await giphyRes.json();
+    // Fetch Giphy data
+    const gifRes = await fetch(giphyURL);
+    const gifData = await gifRes.json();
 
-    if (giphyData.data.length > 0) {
-      const gifUrl = giphyData.data[0].images.original.url;
-      gifImg.src = gifUrl;
-      gifImg.alt = `${pokemonName} vibe gif`;
+    if (gifData.data.length > 0) {
+      gifImg.src = gifData.data[0].images.original.url;
+      gifImg.alt = pokemonName + " gif";
     } else {
       gifImg.src = '';
       gifImg.alt = 'No GIF found';
@@ -40,20 +39,19 @@ form.addEventListener('submit', async (e) => {
 
     vibeText.textContent = `This is what ${pokemonName} feels like.`;
 
-    // Show results
-    result.classList.remove('hidden');
     form.classList.add('hidden');
+    result.classList.remove('hidden');
 
-  } catch (err) {
+  } catch (error) {
     pokeSprite.src = '';
     gifImg.src = '';
-    vibeText.textContent = `"${pokemonName}" isn’t even a real Pokémon.`;
-    result.classList.remove('hidden');
+    vibeText.textContent = `Oops! "${pokemonName}" isn’t a real Pokémon.`;
     form.classList.add('hidden');
+    result.classList.remove('hidden');
   }
 });
 
-// Reset
+// Reset button
 resetBtn.addEventListener('click', () => {
   input.value = '';
   result.classList.add('hidden');

@@ -1,15 +1,9 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: 'Arial', sans-serif;
-  background: #f0f8ff;
-  color: #333;
-  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2f2f2;
+  margin: 0;
   padding: 20px;
+  text-align: center;
 }
 
 .container {
@@ -18,63 +12,53 @@ body {
 }
 
 h1 {
-  margin-bottom: 20px;
   font-size: 24px;
+  margin-bottom: 20px;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  margin-bottom: 20px;
 }
 
 input {
   padding: 10px;
+  width: 80%;
   font-size: 16px;
-  border: 2px solid #333;
-  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 button {
-  padding: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
   background-color: #ffcb05;
   border: none;
-  font-weight: bold;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #ffa500;
+  background-color: #f5b800;
 }
 
-#poke-sprite {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-top: 20px;
+.images {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
-#gif {
-  width: 100%;
-  max-width: 300px;
-  margin: 20px 0;
+img {
+  max-width: 140px;
+  height: auto;
+  border-radius: 10px;
 }
 
 .hidden {
   display: none;
 }
 
-@media (min-width: 768px) {
-  .container {
-    max-width: 600px;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  input, button {
-    font-size: 18px;
-  }
+#vibe-text {
+  font-style: italic;
+  margin-bottom: 10px;
 }
