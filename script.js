@@ -6,12 +6,12 @@ const gifImg = document.getElementById('gif');
 const vibeText = document.getElementById('vibe-text');
 const resetBtn = document.getElementById('reset-btn');
 
-const GIPHY_KEY = 'qyojpWPRSMNsZiIG6J0miLlcT4SAxI1y'; // <--- Replace this!
+const GIPHY_KEY = 'qyojpWPRSMNsZiIG6J0miLlcT4SAxI1y'; // 🔁 Replace this with your actual Giphy key
 
 form.addEventListener('submit', async (e) => {
-  e.preventDefault(); // 🔑 IMPORTANT for mobile
+  e.preventDefault(); // 🔑 Crucial for mobile
 
-  const pokemonName = input.value.trim().toLowerCase();
+  const pokemonName = input.value.trim().toLowerCase().replace(/\s/g, '');
   if (!pokemonName) return;
 
   const pokeURL = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
